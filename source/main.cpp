@@ -52,5 +52,9 @@ int main() {
 
     std::cout << "===============================================\n";
 
+    std::cout << "Enter something: ";
+    std::string forPause;
+    std::cin >> forPause;
+
     return 0;
 }
