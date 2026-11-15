@@ -13,6 +13,15 @@ find_package(cpr CONFIG REQUIRED)
 
 
 
+add_library(tools_for_test STATIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tools_for_test.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/tools_for_test.cpp
+)
+target_include_directories(tools_for_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(tools_for_test PUBLIC cpr::cpr)
+
+
+
 add_executable(test_app ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp)
-target_link_libraries(test_app PRIVATE cpr::cpr)
+target_link_libraries(test_app PRIVATE cpr::cpr tools_for_test)
 target_link_options(test_app PRIVATE -static)
